@@ -1,0 +1,22 @@
+.car-image{
+
+    width: 20%;
+    height: 30%;
+}
+
+.form-default-size
+{
+	width:50%;
+}
+
+.form-default-size > input,
+.form-default-size > b
+{
+	float:left;
+}
+
+.ui-datepicker {
+   background: #333;
+   border: 1px solid #555;
+   color: #EEE;
+ }

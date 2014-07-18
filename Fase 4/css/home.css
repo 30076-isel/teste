@@ -1,0 +1,13 @@
+.default-background-image{
+    width:100%;
+    height:100%;
+
+    background-position:center;
+    background-size:cover;
+}
+
+.car-image{
+
+    width: 140px;
+    height: 150px;
+}
