@@ -1,0 +1,30 @@
+<% include /header %>
+            <div class="jumbotron">
+                <div class="container">
+                    <h2>Perfil</h2>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2">
+                        <img src=<%= gravatar.url(pessoa.email,{s: '500', r: 'g', d: '404'})%>
+                             alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <blockquote>
+                            <p><%=pessoa.firstname%> <%=pessoa.lastname%> </p> <small><cite title="Pais">Portugal-  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+                        </blockquote>
+                        <label class="control-label"></label>
+                        <p> <i class="glyphicon glyphicon-envelope" title="Email"></i> <%=pessoa.email%>
+                            <br/> <i class="glyphicon glyphicon-user" title="Username"></i> <%=pessoa.id%>
+                            <br /> <i class="glyphicon glyphicon-calendar" title="Data de registo"></i> <%=pessoa.dataRegisto%></p>
+                    </div>
+                </div>
+            </div>
+            <hr class="featurette-divider">
+                <h3>Os meus Anuncios</h3>
+            <hr class="featurette-divider">
+            <div id="pagination">
+                <% include /ResultadoPesquisa %>
+            </div>
+<% include /footer %>

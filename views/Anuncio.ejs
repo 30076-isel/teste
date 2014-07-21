@@ -1,0 +1,139 @@
+<% include /header %>
+        <div class="jumbotron">
+            <div class="container">
+                <h3>Detalhes</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <div class="col-md-4">
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">T&#237;tulo</span>
+                        <label class="form-control label-default-size"><%=anuncio.titulo %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Marca</span>
+                        <label class="form-control"><%=anuncio.marcaNome %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Modelo</span>
+                        <label class="form-control"><%=anuncio.modeloNome %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Vers&#227;o</span>
+                        <label class="form-control"><%=anuncio.versao %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Ano</span>
+                        <label class="form-control"><%=anuncio.ano %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Km</span>
+                        <label class="form-control"><%=anuncio.km %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Combust&#237;vel</span>
+                        <label class="form-control"><%=anuncio.combustivelNome %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Localiza&#231;&#227;o</span>
+                        <p>Distrito:</p>
+                        <label class="form-control"><%=anuncio.distritoNome %></label>
+                        <p>Concelho:</p>
+                        <label class="form-control"><%=anuncio.concelhoNome %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Anunciante</span>
+                        <label class="form-control"><%=anuncio.anunciante %></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Pre&#231;o</span>
+                        <label class="form-control"><%=anuncio.preco %></label>
+                        <span class="input-group-addon">&#8364;</span>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Negoci&#225;vel</span>
+                        <label class="form-control"><%= anuncio.negociavel%></label>
+                    </div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Validade</span>
+                        <label class="form-control"><%=anuncio.validade.toDateString() %></label>
+                    </div>
+                    <div>
+                    <div class="input-group col-md-9">
+                        <span class="input-group-addon form-default-size">Classifica&#231;&#227;o M&#233;dia</span>
+                        <label id="labelAverageRating" class="form-control">
+                            <% include /RatingMedia%>
+                        </label>
+                    </div>
+                    </div>
+                    <div class="">
+                        <%if (isLogged && username != anuncio.anunciante) {%>
+                            <form id="FormClassificar"  class="form-inline" role="form" method="post">
+                                <span name="rateStar" class="glyphicon glyphicon-star-empty"></span>
+								<span name="rateStar" class="glyphicon glyphicon-star-empty"></span>
+								<span name="rateStar" class="glyphicon glyphicon-star-empty"></span>
+								<span name="rateStar" class="glyphicon glyphicon-star-empty"></span>
+								<span name="rateStar" class="glyphicon glyphicon-star-empty"></span>
+                            </form>
+                        <%}%>
+                    </div>
+					<div>
+						<%if (isLogged && username == anuncio.anunciante) {%>
+							<div class="input-group col-md-8">
+								<a href="/Anuncio/Editar/<%=anuncio.id %>" class="btn btn-primary btn-xs"> Editar</a>
+								<a id="btnTerminar" name ="<%=anuncio.id %>" href="" class="btn btn-primary btn-xs"> Terminar</a>
+							</div>
+						<%}%>
+					</div>
+                </div>
+				<div class="col-md-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="panel panel-default widget col-md-6">
+                                <div class="panel-heading">
+                                    <span class="glyphicon glyphicon-comment"></span>
+									<span class="label label-primary"><%=pagina%>-<%=numeroPaginas%></span>
+                                    <h3 class="panel-title">Comentários recentes</h3>
+                                    <span class="label label-info"><%=totalComentarios%></span>
+                                </div>
+								<div id="pagination">
+									<% include /Comentarios %>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr class="featurette-divider">
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <%for(var i = 0;i<imagens.length;++i){%>
+            <%if(i==0){%>
+                <li data-target="#myCarousel" data-slide-to="<%=i%>" class="active">
+            <%}else{%>
+                <li data-target="#myCarousel" data-slide-to="<%=i%>">
+            <%}%>
+                </li>
+        <%}%>
+    </ol>
+    <div class="carousel-inner">
+        <%for(var i = 0;i<imagens.length;++i){%>
+            <div class="<%=(i==0)?'item active':'item'%>">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <img src="<%=imagens[i]%>" alt="404- Not Found" class="anucio-image">
+                    </div>
+                </div>
+            </div>
+        <%}%>
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div><!-- /.carousel -->
+<% include /footer %>

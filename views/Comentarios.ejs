@@ -1,0 +1,85 @@
+<div class="panel-body">
+	<ul class="list-group">
+		<%for(var i = 0;i<comentarios.length;++i){%>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col-xs-2 col-md-4">
+						<img src="<%= gravatar.url(comentarios[i].email,{s: '500', r: 'g', d: '404'})%>" class="img-circle img-responsive user-image" alt="" /></div>
+					<div class="col-xs-2 col-md-7">
+						<div>
+							<p><b><%=comentarios[i].titulo%></b></p>
+							<div class="mic-info">
+								By: <a href="/Pessoa/Perfil/<%=comentarios[i].username %>"><%=comentarios[i].username%></a> on <%=comentarios[i].dataRegisto%>
+							</div>
+						</div>
+						<div class="comment-text">
+							<%=comentarios[i].texto%>
+						</div>
+						<%if(isLogged && username == comentarios[i].username){%>
+						<div class="action">	
+							<form method="post" action="/Anuncio/Comentar/Remover/<%=comentarios[i].id%>">
+							<button type="submit" class="btn btn-danger btn-xs" title="Remover">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button>
+							</form>
+						</div>
+						<%}%>
+					</div>
+				</div>
+			</li>
+		<%}%>    
+	</ul>
+	<%if(isLogged && username != anuncio.anunciante && canComment){%>
+		<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">
+			<span class="glyphicon glyphicon-pencil"></span>Comentar
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<legend class="text-center">Comentar</legend>
+				</div>
+				<form class="form-horizontal" action="/Anuncio/Comentar/<%=anuncio.id%>" method="post">
+					<div class="modal-body">
+						<div class="well well-sm">
+								<!-- Titulo input-->
+								<div class="form-group">
+									<label class="col-md-6 control-label" for="name">Titulo</label>
+									<div class="col-md-6">
+										<input id="titulo" name="comentario[titulo]" type="text" placeholder="Titulo" class="form-control">
+									</div>
+								</div>
+								<!-- Message body -->
+								<div class="form-group">
+									<label class="col-md-6 control-label" for="texto">Coment&#225;rio</label>
+									<div class="col-md-6">
+										<textarea class="form-control" id="texto" name="comentario[texto]" placeholder="Escreva aqui o seu coment&#225;rio..." rows="5"></textarea>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="form-group">
+							<div class="col-md-12 text-right">
+								<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Fechar</button>
+								<button type="submit" class="btn btn-primary btn-lg">Adicionar</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			</div>
+		</div>
+	<%}%>
+	<div class="text-center">
+		<div class="">
+			<ul id="pager" class="pager ">
+				<li><a name="<%=(pagina==1)?1:(parseInt(pagina)-1)%>" href="">Anterior</a></li>
+				<span class="glyphicon glyphicon-refresh"></span>
+				<li><a name="<%=(pagina==numeroPaginas)?numeroPaginas:(parseInt(pagina)+1)%>" href="">Proxima</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

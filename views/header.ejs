@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/icons/car.ico">
+    <title>St@nd PISEL</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/StandPISEL.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>-->
+    <![endif]-->
+    <!-- Custom styles for this template -->
+    <!--<link href="../css/carousel.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+</head>
+    <body>
+		<div id="page_effect" style="display:none;">
+        <!-- START MENU BAR-->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/Inicio"><span class="glyphicon glyphicon-road"></span>St@nd PISEL</a>
+                </div>
+                <div class="collapse navbar-collapse collapse in">
+                    <ul class="nav navbar-nav">
+                        <%if(page=='inicio'){%>
+                            <li class="active">
+                        <%}else{%>
+                            <li>
+                        <%}%>
+                            <a href="/Inicio"><span class="glyphicon glyphicon-home"></span>Inicio</a>
+                        </li>
+                        <%if(page=='sobre'){%>
+                            <li class="active">
+                        <%}else{%>
+                            <li>
+                        <%}%>
+                            <a href="/Sobre"><span class="glyphicon glyphicon-info-sign"></span>Sobre</a>
+                        </li>
+                        <%if(page=='adicionar'){%>
+                        <li class="active">
+                            <%}else{%>
+                        <li>
+                            <%}%>
+                            <a href="/Anuncio/Adicionar"><span class="glyphicon glyphicon-hand-up"></span>Adicionar</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <%if(page=='pesquisa'){%>
+                            <li class="active">
+                        <%}else{%>
+                            <li>
+                        <%}%>
+                            <a href="/Anuncio/Pesquisa" title="Pesquisa Avançada">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                        
+                        <%if(isLogged){%>
+
+                            <div class="navbar-form navbar-right row">
+                                <div class="col-sm-4">
+                                    Olá <b><%=username%></b>
+                                </div>
+                                <div class="col-sm-4">
+                                    <form role="form" method="get">
+                                        <a id="btn-perfil" class="btn btn-info btn-sm" href="/Pessoa/Perfil/<%=username%>">Perfil</a>
+                                    </form>
+                                </div>
+                                <div class="col-sm-4">
+                                    <form method="post" action="/Pessoa/Sair" name="logoutForm">
+                                        <button type="submit" class="btn btn-danger btn-sm">Sair</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <%}else{%>
+                        <form class="navbar-form navbar-right" role="form" method="get">
+                            <a id="btn-signIn" class="btn btn-primary btn-sm" href="/Pessoa/Autenticar">Entrar</a>
+                            <a id="btn-register" class="btn btn-success btn-sm" href="/Pessoa/Registar">Registar</a>
+                        </form>
+                        <%}%>
+
+                    <form class="navbar-form" role="search" method="get" action="/Anuncio/Pesquisa">
+                        <div class="input-group input-group-sm">
+                            <input type="radio"
+                                   name = "type"
+                                   id = "titulo"
+                                   value = "titulo"
+                                   checked hidden>
+                            <input id="srch-term" type="text" class="form-control" placeholder="Pesquisa por Titulo" name="value" >
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" title="Search">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MENU BAR-->
+		

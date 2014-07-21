@@ -1,0 +1,128 @@
+<% include /header %>
+        <!-- END MENU BAR-->
+        <div class="jumbotron">
+            <div class="container">
+                <h3>Adicionar</h3>
+            </div>
+        </div>
+		<div class="container">
+		    <form id="AnuncioForm" class="form-inline" role="form" enctype="multipart/form-data" method="post" action="/Anuncio/Editar/<%=anuncio.id %>">
+				<div class="row row-offcanvas row-offcanvas-right">
+					<div class="col-xs-12 col-sm-9">
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">T&#237;tulo</span>
+							<input name="anuncio[titulo]" type="text" class="form-control" value="<%=anuncio.titulo %>">
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Marca</span>
+                            <select name="anuncio[marca]" class="form-control" form="AnuncioForm">
+                                <option value="0">Select it!</option>
+                                <%for(var i = 0;i<marcas.length;++i){%>
+                                <%if(anuncio.marca == marcas[i].id){%>
+                                <option value="<%=marcas[i].id%>" selected><%=marcas[i].nome%>
+                                </option>
+                                <%}else{%>
+                                    <option value="<%=marcas[i].id%>"><%=marcas[i].nome%>
+                                    </option>
+                                <%}%>
+                                <%}%>
+                            </select>
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Modelo</span>
+                            <select name="anuncio[modelo]" class="form-control" form="AnuncioForm">
+                                <option value="0">Select it!</option>
+                                <%for(var i = 0;i<modelos.length;++i){%>
+                                <%if(anuncio.modelo == modelos[i].id){%>
+                                    <option value="<%=modelos[i].id%>" selected><%=modelos[i].nome%></option>
+                                    </option>
+                                <%}else{%>
+                                    <option value="<%=modelos[i].id%>"><%=modelos[i].nome%></option>
+                                <%}%>
+                                <%}%>
+                            </select>
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Vers&#227;o</span>
+							<input name="anuncio[versao]"type="text" class="form-control" value="<%=anuncio.versao %>">
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Ano</span>
+							<input name="anuncio[ano]" type="text" class="form-control" value="<%=anuncio.ano %>">
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Km</span>
+							<input name="anuncio[km]" type="text" class="form-control" value="<%=anuncio.km %>">
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Combust&#237;vel</span>
+							<select name="anuncio[combustivel]" class="form-control" form="AnuncioForm">
+								<option value="0">Select it!</option>
+                                <%for(var i = 0;i<combustiveis.length;++i){%>
+                                <%if(anuncio.combustivel == combustiveis[i].id){%>
+                                <option value="<%=combustiveis[i].id%>" selected><%=combustiveis[i].nome%></option>
+                                </option>
+                                <%}else{%>
+                                    <option value="<%=combustiveis[i].id%>"><%=combustiveis[i].nome%></option>
+                                <%}%>
+
+                                <%}%>
+							</select>
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Localiza&#231;&#227;o</span>
+							<p>Distrito:</p>
+                            <select name="anuncio[distrito]" class="form-control" form="AnuncioForm">
+								<option value="0">Select it!</option>
+                                <%for(var i = 0;i<distritos.length;++i){%>
+                                <%if(anuncio.distrito == distritos[i].id){%>
+                                    <option value="<%=distritos[i].id%>" selected><%=distritos[i].nome%></option>
+                                    </option>
+                                <%}else{%>
+                                    <option value="<%=distritos[i].id%>"><%=distritos[i].nome%></option>
+                                <%}%>
+                                <%}%>
+							</select>
+                            <p>Concelho:</p>
+							<select name="anuncio[concelho]" class="form-control" form="AnuncioForm">
+								<option value="0">Select it!</option>
+                                <%for(var i = 0;i<concelhos.length;++i){%>
+                                <%if(anuncio.concelho == concelhos[i].id){%>
+                                <option value="<%=concelhos[i].id%>" selected><%=concelhos[i].nome%></option>
+                                </option>
+                                <%}else{%>
+                                <option value="<%=concelhos[i].id%>"><%=concelhos[i].nome%></option>
+                                <%}%>
+
+                                <%}%>
+							</select>
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Pre&#231;o</span>
+							<input name="anuncio[preco]" type="text" class="form-control" value="<%=anuncio.preco %>">
+							<span class="input-group-addon">&#8364;</span>
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Negoci&#225;vel</span>
+							<select name="anuncio[negociavel]" class="form-control" form="AnuncioForm">
+								<option value="0">Select it!</option>
+								<option>Sim</option>
+								<option>N&#227;o</option>
+							</select>
+						</div>
+						<div class="input-group col-xs-6">
+							<span class="input-group-addon form-default-size">Validade</span>
+							<input name="anuncio[validade]" type="text" class="form-control" value="<%=anuncio.validade %>">
+						</div>
+                        <div class="input-group col-xs-6">
+                            <span class="input-group-addon form-default-size">File Input</span>
+                            <input name="anuncio[file]" type="file" id="exampleInputFile" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-6">
+                            <button type="submit" class="btn btn-lg btn-primary btn-block form-default-size">Submit</button>
+                        </div>
+					</div>
+				</div>
+			</form>
+		</div>
+<% include /footer %>

@@ -1,0 +1,156 @@
+<% include /header %>
+        <div class="jumbotron">
+            <h3>Pesquisa Avan&#231;ada</h3>
+        </div>
+        <form method="get" id="AdvSearchForm" name="AdvSearchForm" >
+        	<div class="container">
+        		<div class="row row-offcanvas row-offcanvas-right">
+        			<div class="col-xs-12 col-sm-9">
+        				<div class="input-group col-xs-4">
+        					<span class="input-group-addon form-default-size">
+        						<input type="radio"
+        							   name = "type"
+        							   id = "titulo"
+        							   value = "titulo"
+        							   checked>
+        						<b>T&#237;tulo</b>
+        					</span>
+        					<input type="text" name="value" class="form-control">
+        				</div>
+        				<div class="input-group col-xs-4">
+        						<span class="input-group-addon form-default-size">
+        							<input type="radio"
+        								   name = "type"
+        								   id = "marca"
+        								   value = "marca">
+        							<b>Marca</b>
+        						</span>
+        					<input type="text" name="value" class="form-control">
+        				</div>
+        				<div class="input-group col-xs-4">
+        					<span class="input-group-addon form-default-size">
+        						<input type="radio"
+        							   name = "type"
+        							   id = "modelo"
+        							   value = "modelo">
+        						<b>Modelo</b>
+        					</span>
+        					<input type="text" name="value" class="form-control">
+        				</div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "versao"
+                                       value = "versao">
+                                <b>Vers&#227;o</b>
+                            </span>
+                            <input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "ano"
+                                       value = "ano">
+                                <b>Ano</b>
+                            </span>
+                            <p>Min:</p><input type="text" name="value" class="form-control">
+                            <p>Max:</p><input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "km"
+                                       value = "km">
+                                <b>Km</b>
+                            </span>
+                            <p>Min:</p><input type="text" name="value" class="form-control">
+                            <p>Max:</p><input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "combustivel"
+                                       value = "combustivel">
+                                <b>Combust&#237;vel</b>
+                            </span>
+                            <input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "localizacao"
+                                       value = "localizacao">
+                                <b>Distrito</b>
+                            </span>
+                            <input id="BoxDistrito" type="text" name="value" class="form-control">
+                        </div>
+						                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "localizacao"
+                                       value = "localizacao">
+                                <b>Concelho</b>
+                            </span>
+                            <input id="BoxConcelho" type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "anunciante"
+                                       value = "anunciante">
+                                <b>Anunciante</b>
+                            </span>
+                            <input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "preco"
+                                       value = "preco">
+                                <b>Pre&#231;o</b>
+                            </span>
+                            <p>Min:</p><input type="text" name="value" class="form-control">
+                            <p>Max:</p><input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "negociavel"
+                                       value = "negociavel">
+                                <b>Negoci&#225;vel</b>
+                            </span>
+                            <input type="text" name="value" class="form-control">
+                        </div>
+                        <div class="input-group col-xs-4">
+                            <span class="input-group-addon form-default-size">
+                                <input type="radio"
+                                       name = "type"
+                                       id = "validade"
+                                       value = "validade">
+                                <b>Validade</b>
+                            </span>
+                            
+                            <input id="BoxDataValidade" type="text" name="value" class="form-control" required>
+                        </div>
+        				<div class="input-group col-xs-4">
+        					<button class="btn btn-lg btn-primary btn-block form-default-size" form="AdvSearchForm">Pesquisar</button>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </form>
+        <hr class="featurette-divider">
+        <hr class="featurette-divider">
+        <div id="pagination">
+            <% include /ResultadoPesquisa %>
+        </div>
+<% include /footer %>
